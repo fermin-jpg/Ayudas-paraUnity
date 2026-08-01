@@ -2,7 +2,28 @@
 
 Una aplicación web moderna, interactiva y dinámica diseñada para aprender, comprender y consultar rápidamente **cada concepto, función y sección del Manual de Usuario oficial de Unity** (`docs.unity3d.com`), el paquete `com.unity.ai.assistant` y estructuras avanzadas de C#.
 
-![Vista Previa de la Aplicación Web](preview.png)
+---
+
+## 🖼️ Menú Principal y Vista por Bloques
+
+### 📱 Vista del Menú Principal de la Aplicación Web
+En el menú principal de la aplicación web se muestran todos los bloques de contenido organizados en tarjetas individuales por colores, con un contador en vivo de conceptos y el buscador en tiempo real en la esquina superior derecha:
+
+![Menú Principal de Tarjetas y Bloques](menu_principal.png)
+
+---
+
+### 📘 Estructura 1 a 1 del Menú Oficial de Unity Manual
+Cada tarjeta del menú principal corresponde 1 a 1 con las secciones del árbol oficial de navegación de Unity (`docs.unity3d.com/Manual/index.html`):
+
+![Menú Oficial del Manual de Unity](manual_oficial.png)
+
+---
+
+### 🔍 Detalle Interactivo y Fragmentos de Código
+Al hacer clic en cualquier función o concepto de las tarjetas, se abre una ventana modal flotante con la explicación completa en español, el momento en que se debe usar, consejos de rendimiento, enlace directo a la documentación oficial y el snippet C# listo para copiar y pegar:
+
+![Detalle de Función y Código C#](preview.png)
 
 ---
 
@@ -47,7 +68,9 @@ Ayudas Clara Unity/
 ├── estilos.css       # Sistema de diseño visual oscuro premium y animaciones
 ├── datos.js          # Base de datos completa con más de 40 categorías y 100+ conceptos
 ├── app.js            # Lógica de búsqueda, filtrado, modal, sintaxis C# y sincronización
-├── preview.png       # Captura de pantalla de la interfaz de la aplicación
+├── menu_principal.png # Captura de pantalla del menú principal con todas las tarjetas
+├── manual_oficial.png # Captura de pantalla del menú oficial de Unity Manual
+├── preview.png       # Captura de pantalla de la interfaz de detalles y código
 └── README.md         # Documentación y guía de uso del proyecto
 ```
 
