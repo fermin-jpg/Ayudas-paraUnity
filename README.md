@@ -12,7 +12,7 @@ En el menú principal de la aplicación web se muestran todos los bloques de con
 
 ---
 
-## 🌳 Árbol Interactivo de Navegación de la Documentación (GitHub Interactive Tree)
+## 🌳 Árbol Interactivo 
 
 Despliega cualquier nodo haciendo clic en **`▶`** para explorar la jerarquía completa partiendo desde **`🎮 Unity Documentation`**:
 
