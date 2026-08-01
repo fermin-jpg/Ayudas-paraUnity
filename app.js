@@ -245,9 +245,13 @@ function abrirModalDetalles(concepto, categoria) {
   let urlOficial = `https://docs.unity3d.com/ScriptReference/${nombreLimpio}.html`;
   if (categoria.id.includes("unity-ai")) {
     urlOficial = "https://docs.unity3d.com/Packages/com.unity.ai.assistant@2.17/manual/index.html";
+  } else if (categoria.id === "unity-monetization") {
+    urlOficial = "https://docs.unity.com/en-us/monetization";
+  } else if (categoria.id === "unity-user-acquisition") {
+    urlOficial = "https://docs.unity.com/en-us/user-acquisition";
   }
   enlaceDocumentacionOficial.href = urlOficial;
-  enlaceDocumentacionOficial.textContent = `🔗 Ver ${nombreLimpio} en la documentación oficial (docs.unity3d.com) ➔`;
+  enlaceDocumentacionOficial.textContent = `🔗 Ver ${nombreLimpio} en la documentación oficial (docs.unity.com) ➔`;
 
   modalCodigoCSharp.innerHTML = colorearSintaxisCSharp(concepto.codigo);
 
@@ -268,7 +272,7 @@ function colorearSintaxisCSharp(codigoTexto) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 
-  const patronCSharp = /(\/\/.+$)|(".*?")|\b(using|public|private|protected|internal|void|class|struct|interface|enum|if|else|switch|case|default|return|for|foreach|while|yield|new|async|await|static|readonly|const|override|virtual|abstract|out|ref|true|false|null|var|get|set|event|break|is|not|and|or|when)\b|\b(MonoBehaviour|GameObject|Transform|Vector3|Vector2|Quaternion|Rigidbody|Rigidbody2D|Collider|Collider2D|SpriteRenderer|AudioSource|AudioClip|AudioMixer|Animator|Camera|Light|Material|Shader|Debug|Time|Input|Mathf|Physics|Physics2D|SceneManager|AsyncOperation|IEnumerator|ObjectPool|Button|VisualElement|Label|UIDocument|Tilemap|Grid|NavMeshAgent|NavMesh|PlayerPrefs|JsonUtility|Profiler|CancellationToken|Task|Awaitable|ScriptableObject|Addressables|List|Dictionary|Action|Func|UnityEvent|ItemRarity|IDamageable|IDaniable|CharacterController|Collision)\b/gm;
+  const patronCSharp = /(\/\/.+$)|(".*?")|\b(using|public|private|protected|internal|void|class|struct|interface|enum|if|else|switch|case|default|return|for|foreach|while|yield|new|async|await|static|readonly|const|override|virtual|abstract|out|ref|true|false|null|var|get|set|event|break|is|not|and|or|when)\b|\b(MonoBehaviour|GameObject|Transform|Vector3|Vector2|Quaternion|Rigidbody|Rigidbody2D|Collider|Collider2D|SpriteRenderer|AudioSource|AudioClip|AudioMixer|Animator|Camera|Light|Material|Shader|Debug|Time|Input|Mathf|Physics|Physics2D|SceneManager|AsyncOperation|IEnumerator|ObjectPool|Button|VisualElement|Label|UIDocument|Tilemap|Grid|NavMeshAgent|NavMesh|PlayerPrefs|JsonUtility|Profiler|CancellationToken|Task|Awaitable|ScriptableObject|Addressables|List|Dictionary|Action|Func|UnityEvent|ItemRarity|IDamageable|IDaniable|CharacterController|Collision|IronSource|Product|Advertisement|AnalyticsService|CloudSaveService)\b/gm;
 
   return textoEscapado.replace(patronCSharp, (coincidencia, comentario, cadena, palabraClave, tipoUnity) => {
     if (comentario) return `<span class="kw-comment">${comentario}</span>`;
