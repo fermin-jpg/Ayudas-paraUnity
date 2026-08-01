@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unity C# Cheat Sheet & Manual Interactivo</title>
+  <meta name="description" content="Guía interactiva completa de funciones, componentes y conceptos esenciales de Unity 6 y C# basada en el manual oficial.">
+  <link rel="stylesheet" href="estilos.css">
+  <!-- Fuentes e iconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Contenedor Principal de la Aplicación Web -->
+  <div class="contenedor-principal">
+
+    <!-- Encabezado del Sitio estilo Cheat Sheet de Unity -->
+    <header class="encabezado-sitio">
+      <h1 class="titulo-portada">
+        UNITY <span class="destacado-csharp">C#</span> CHEAT SHEET
+      </h1>
+      <p class="subtitulo-portada">GUÍA DE REFERENCIA INTERACTIVA CON SINCRONIZACIÓN EN TIEMPO REAL</p>
+      <p class="descripcion-portada">
+        Conectado con la documentación oficial de Unity. Haz clic en cualquier función para ver una explicación detallada de qué hace, cómo utilizarla y ejemplos de código C#.
+      </p>
+    </header>
+
+    <!-- Barra de Herramientas: Filtros, Buscador y Botón de Sincronización Web -->
+    <section class="barra-herramientas">
+      
+      <!-- Filtro por Categorías -->
+      <div class="bloque-filtros">
+        <label for="selectCategoria" class="etiqueta-filtro">Categoría:</label>
+        <select id="selectCategoria" class="select-categoria">
+          <option value="todas">✨ Todas las categorías</option>
+        </select>
+      </div>
+
+      <!-- Botón de Sincronización en Tiempo Real con la Web de Unity -->
+      <button id="botonSincronizarWeb" class="boton-sincronizar-web" title="Comprobar y sincronizar actualizaciones desde la web oficial de Unity">
+        🔄 Sincronizar con Web Oficial
+      </button>
+
+      <!-- Buscador principal arriba a la derecha -->
+      <div class="bloque-buscador">
+        <span class="icono-buscar">🔍</span>
+        <input 
+          type="text" 
+          id="inputBuscador" 
+          class="input-buscador" 
+          placeholder="Buscar función, concepto o componente... (Presiona '/')"
+          autocomplete="off"
+        >
+        <button id="botonLimpiarBusqueda" class="boton-limpiar-busqueda" title="Limpiar búsqueda">✖</button>
+      </div>
+
+    </section>
+
+    <!-- Contador de resultados y estado de sincronización en tiempo real -->
+    <div class="barra-estado-superior">
+      <div class="contador-resultados">
+        <span class="insignia-contador" id="textoContador">Cargando funciones...</span>
+      </div>
+      <div class="indicador-sincronizacion" id="indicadorSincronizacion">
+        <span class="punto-sincronizado">●</span> <span id="textoEstadoSincronizacion">Sincronizado con docs.unity3d.com</span>
+      </div>
+    </div>
+
+    <!-- Rejilla Interactiva de Tarjetas (Grid de Bloques por Categoría) -->
+    <main class="rejilla-tarjetas" id="rejillaTarjetas">
+      <!-- Las tarjetas se generan dinámicamente desde JavaScript -->
+    </main>
+
+    <!-- Estado vacío cuando no hay resultados en la búsqueda -->
+    <div class="estado-vacio" id="estadoVacio">
+      <div class="icono-vacio">🔍</div>
+      <h3 class="titulo-vacio">No se encontraron resultados</h3>
+      <p class="texto-vacio">Prueba a buscar con otra palabra clave como "Rigidbody", "Vector3", "Raycast" o "Update".</p>
+    </div>
+
+  </div>
+
+  <!-- MODAL INTERACTIVO DE EXPLICACIÓN (POPUP DE DETALLES) -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-contenedor">
+      
+      <!-- Encabezado del Modal -->
+      <div class="modal-encabezado">
+        <div class="modal-info-titulo">
+          <span class="modal-insignia-categoria" id="modalInsigniaCategoria">Categoría</span>
+          <h2 class="modal-titulo" id="modalTitulo">Nombre de la Función</h2>
+        </div>
+        <button class="modal-boton-cerrar" id="modalBotonCerrar" title="Cerrar (Tecla ESC)">✖</button>
+      </div>
+
+      <!-- Cuerpo explicativo del Modal con Scrollbar -->
+      <div class="modal-cuerpo">
+        
+        <!-- Sección 1: ¿Qué hace? -->
+        <div class="modal-seccion">
+          <h4 class="modal-subtitulo-seccion">📝 ¿Qué hace esta función / concepto?</h4>
+          <p class="modal-texto" id="modalTextoDescripcion">Explicación del concepto...</p>
+        </div>
+
+        <!-- Sección 2: ¿Cuándo usarla? -->
+        <div class="modal-seccion">
+          <h4 class="modal-subtitulo-seccion">💡 ¿Cuándo y cómo utilizarla en tus juegos?</h4>
+          <p class="modal-texto" id="modalTextoUso">Caso de uso en C#...</p>
+        </div>
+
+        <!-- Sección 3: Ejemplo de Código C# -->
+        <div class="modal-seccion">
+          <h4 class="modal-subtitulo-seccion">💻 Código C# de ejemplo (Listo para copiar en tu script)</h4>
+          <div class="bloque-codigo-wrapper">
+            <div class="barra-codigo-top">
+              <span>Método / Función en C#</span>
+              <button class="boton-copiar-codigo" id="botonCopiarCodigo">📋 Copiar Código</button>
+            </div>
+            <pre class="codigo-pre"><code id="modalCodigoCSharp">// Código de ejemplo</code></pre>
+          </div>
+        </div>
+
+        <!-- Sección 4: Enlace directo a la Documentación Oficial de Unity -->
+        <div class="modal-seccion">
+          <h4 class="modal-subtitulo-seccion">🌐 Enlace Oficial de Unity</h4>
+          <p class="modal-texto">
+            <a id="enlaceDocumentacionOficial" href="https://docs.unity3d.com/Manual/index.html" target="_blank" rel="noopener" class="enlace-web-oficial">
+              🔗 Abrir documentación oficial en docs.unity3d.com ➔
+            </a>
+          </p>
+        </div>
+
+        <!-- Sección 5: Consejo / Error Común -->
+        <div class="caja-consejo">
+          <span class="icono-consejo">⚠️</span>
+          <div class="texto-consejo" id="modalTextoConsejo">Consejo o advertencia de rendimiento...</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Pie de página -->
+  <footer class="pie-pagina">
+    <p>Unity C# Cheat Sheet & Manual Interactivo • Sincronizado en tiempo real con docs.unity3d.com</p>
+  </footer>
+
+  <!-- Carga de datos y scripts de interacción -->
+  <script src="datos.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
